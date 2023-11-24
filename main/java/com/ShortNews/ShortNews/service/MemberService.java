@@ -3,8 +3,11 @@ package com.ShortNews.ShortNews.service;
 import com.ShortNews.ShortNews.SHA256;
 import com.ShortNews.ShortNews.entity.Member;
 import com.ShortNews.ShortNews.entity.Platform;
+import com.ShortNews.ShortNews.entity.Preference;
+import com.ShortNews.ShortNews.entity.PreferenceKey;
 import com.ShortNews.ShortNews.repository.MemberRepository;
 import com.ShortNews.ShortNews.repository.PlatformRepository;
+import com.ShortNews.ShortNews.repository.PreferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,8 @@ public class MemberService {
     private MemberRepository memberRepository;
     @Autowired
     private PlatformRepository platformRepository;
+    @Autowired
+    private PreferenceRepository preferenceRepository;
     @Autowired
     private EntityManager entityManager;
 
@@ -97,6 +102,19 @@ public class MemberService {
         }
         else { // 이메일이 없다면
             return -1;
+        }
+
+
+    }
+    public void joinCate(String id, String[] categories, String nickname) {
+        memberRepository.updateNickName(nickname, id);
+        Preference preference = new Preference();
+        for (String num : categories) {
+            PreferenceKey preferenceKey = new PreferenceKey();
+            preferenceKey.setCate_id(num);
+            preferenceKey.setMem_id(id);
+            preference.setPreferenceKey(preferenceKey);
+            preferenceRepository.save(preference);
         }
 
     }
