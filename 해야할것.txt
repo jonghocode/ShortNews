@@ -3,16 +3,12 @@ createMemberId : 시퀀스 날짜마다 초기화
 join부분에서 전화번호나 이메일이 중복되면 예외를 던지는데 이 예외를 어디서 처리?해서
 회원가입 화면으로 다시 돌아갈지 지금은 에러 페이지가 뜸(회원가입이 성공하면 카테고리로 감)
 
-카테고리선택화면(SelectCategory)에서 선호카테고리(preference)에 값 넣는 것 까진 ok(session으로 아이디 받아와서 저장)
-닉네임도 set해줘야하고 session 종료?
+카테고리선택화면(SelectCategory)에서 선호카테고리(preference)에 값 넣는 것 까진 ok(session으로 아이디 받아와서 저장) session 종료?
 
 메인화면(Main)
-logincontroller에 /new/password에 email로 url보내고 url누르면
-새 비밀번호 변경 창(만들어야 함) 나오게
 
 회원가입시 platform에 이메일이 들어가지만 jpa로 회원을 delete했을 때
 platform에 행이 사라지는지 확인
-
 
 #######################
 3.35.26.57
